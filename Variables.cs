@@ -7,7 +7,7 @@ class Variables
         if (token.EndsWith('!'))
         {
             token.Trim('!');
-            variables.Add(token, null);
+            variables.Add(token, 0);
         }
         else
         {
@@ -32,7 +32,7 @@ class Variables
         if (token.EndsWith('!'))
         {
             token.Trim('!');
-            variables.Add(token, null);
+            variables.Add(token, 0.0);
         }
         else
         {
@@ -54,29 +54,19 @@ class Variables
     }
     public static void addString(string token, int line)
     {
-        if (token.EndsWith('!'))
+        string[] seperate = token.Split('=');
+        string name = seperate[0];
+        name = name.Trim(' ');
+        string prevalue = seperate[1].Trim(' ');
+        string value = prevalue.Trim('"');
+        try
         {
-            token.Trim('!');
-            variables.Add(token, null);
+            variables.Add(name, value);
         }
-        else
+        catch
         {
-            string[] seperate = token.Split('=');
-            string name = seperate[0];
-            name = name.Trim(' ');
-            string prevalue = seperate[1].Trim(' ');
-            string value = prevalue.Trim('"');
-            try
-            {
-                variables.Add(name, value);
-            }
-            catch
-            {
-                Error.Unallowedsign(line);
-            }
+            Error.Unallowedsign(line);
         }
-
-
     }
     public static bool Yeet(string vars, int line)
     {

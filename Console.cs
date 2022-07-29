@@ -1,4 +1,4 @@
-class Print
+class ConsoleInteraction
 {
     public static void Out(string input, int line)
     {
@@ -72,5 +72,16 @@ class Print
             Console.Write(tokens[i]);
         }
         Console.Write("\n");
+    }
+    public static void input(string var, int line)
+    {
+        if (!Variables.variables.Contains(var))
+        {
+            Error.VarNotDeclared(line, var);
+        }
+        else
+        {
+            Variables.variables[var] = Console.ReadLine();
+        }
     }
 }
