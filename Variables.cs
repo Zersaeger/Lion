@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Diagnostics.Contracts;
+using System.Linq.Expressions;
 
 class Variables
 {
@@ -225,6 +226,26 @@ class Variables
         {
             name += $"[{i.ToString()}]";
             variables.Add(name, 0.0);
+        }
+    }
+
+    public static void changeValue(string name, string newValue)
+    {
+        if (variables.Contains(name))
+        {
+            if (variables[name] is int)
+            {
+                variables[name] = Int32.Parse(newValue);
+            }
+            else if (variables[name] is double)
+            {
+                variables[name] = Double.Parse(newValue);
+            }
+            else if (variables[name] is string)
+            {
+                newValue = newValue.Trim('"');
+                variables[name] = newValue;
+            }
         }
     }
 }
