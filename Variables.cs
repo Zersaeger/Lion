@@ -1,4 +1,6 @@
 using System.Collections;
+using System.Diagnostics.Contracts;
+
 class Variables
 {
     public static Hashtable variables = new Hashtable();
@@ -103,5 +105,126 @@ class Variables
             }
         }
         return true;
+    }
+
+    public static void NewStringArray(string cutline, int line)
+    {
+        string[] tokens = cutline.Split('=');
+        string name = "";
+        int size = 0;
+        try
+        {
+            string presize = tokens[1].Trim(' ');
+            string presize2 = presize.Trim('[');
+            string presize3 = presize2.Trim(']');
+            size = Int32.Parse(presize3);
+        }
+        catch
+        {
+            try
+            {
+                string presize2 = tokens[1].Trim('[');
+                string presize3 = presize2.Trim(']');
+                size = Int32.Parse(presize3);
+            }
+            catch
+            {
+                Error.SyntaxError(line);
+                return;
+            }
+        }
+        try
+        {
+            name = tokens[0].Trim(' ');
+        }
+        catch
+        {
+            name = tokens[0];
+        }
+        for (int i = 0; i < size; i++)
+        {
+            name += $"[{i.ToString()}]";
+            variables.Add(name, "");
+        }
+    }
+    public static void NewIntArr(string cutline, int line)
+    {
+        string[] tokens = cutline.Split('=');
+        string name = "";
+        int size = 0;
+        try
+        {
+            string presize = tokens[1].Trim(' ');
+            string presize2 = presize.Trim('[');
+            string presize3 = presize2.Trim(']');
+            size = Int32.Parse(presize3);
+        }
+        catch
+        {
+            try
+            {
+                string presize2 = tokens[1].Trim('[');
+                string presize3 = presize2.Trim(']');
+                size = Int32.Parse(presize3);
+            }
+            catch
+            {
+                Error.SyntaxError(line);
+                return;
+            }
+        }
+        try
+        {
+            name = tokens[0].Trim(' ');
+        }
+        catch
+        {
+            name = tokens[0];
+        }
+        for (int i = 0; i < size; i++)
+        {
+            name += $"[{i.ToString()}]";
+            variables.Add(name, 0);
+        }
+    }
+    public static void NewDoubleArr(string cutline, int line)
+    {
+        string[] tokens = cutline.Split('=');
+        string name = "";
+        int size = 0;
+        try
+        {
+            string presize = tokens[1].Trim(' ');
+            string presize2 = presize.Trim('[');
+            string presize3 = presize2.Trim(']');
+            size = Int32.Parse(presize3);
+        }
+        catch
+        {
+            try
+            {
+                string presize2 = tokens[1].Trim('[');
+                string presize3 = presize2.Trim(']');
+                size = Int32.Parse(presize3);
+            }
+            catch
+            {
+                Error.SyntaxError(line);
+                return;
+            }
+        }
+        try
+        {
+            name = tokens[0].Trim(' ');
+        }
+        catch
+        {
+            name = tokens[0];
+        }
+        for (int i = 0; i < size; i++)
+        {
+            name += $"[{i.ToString()}]";
+            variables.Add(name, 0.0);
+        }
     }
 }

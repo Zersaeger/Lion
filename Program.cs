@@ -1,12 +1,11 @@
-﻿using System.Diagnostics;
-using System.Globalization;
+﻿using System.Globalization;
 class Program
 {
     public static bool run = true;
     public static void Main()
     {
-        // var watch = new System.Diagnostics.Stopwatch();
-        //watch.Start();
+        var watch = new System.Diagnostics.Stopwatch();
+        watch.Start();
 
         while (run)
         {
@@ -35,16 +34,15 @@ class Program
                     case "string":
                         Variables.addString(cutline[1], i + 1);
                         break;
-
+                    case "string[]":
+                        Variables.NewStringArray(cutline[1], i + 1);
+                        break;
                     case "yeet":
                         if (Variables.Yeet(cutline[1], i + 1))
                         {
                             continue;
                         }
-                        else
-                        {
-                            return;
-                        }
+                        break;
                     case "//":
                         continue;
                     case "/*":
@@ -53,8 +51,8 @@ class Program
                 }
             }
             run = false;
-            //watch.Stop();
-            //Console.WriteLine($"Execution Time: {watch.ElapsedMilliseconds} ms");
+            watch.Stop();
+            Console.WriteLine($"Execution Time: {watch.ElapsedMilliseconds} ms");
         }
     }
 

@@ -10,4 +10,9 @@ class Error
         Console.WriteLine("Var " + name + " in line: " + line + " not declared");
         Program.run = false;
     }
+    public static void SyntaxError(int line)
+    {
+        Console.WriteLine("Syntax error in line: " + line);
+        Program.run = false;
+    }
 }
