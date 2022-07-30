@@ -7,7 +7,7 @@ class Error
     }
     public static void VarNotDeclared(int line, string name)
     {
-        Console.WriteLine("Var " + name + " in line: " + line + " not declared");
+        Console.WriteLine("Var " + name + " in line: " + line + " is not declared");
         Program.run = false;
     }
     public static void SyntaxError(int line)
