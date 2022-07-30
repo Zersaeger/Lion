@@ -5,6 +5,7 @@ class ConsoleInteraction
         char[] tokens = input.ToCharArray();
         int first = -1;
         int last = -1;
+        input = input.Trim(' ');
         if (!input.StartsWith("\""))
         {
             if (Variables.variables.Contains(input.Trim(' ')))
@@ -38,6 +39,7 @@ class ConsoleInteraction
     }
     public static void LnOut(string input, int line)
     {
+        input = input.Trim(' ');
         char[] tokens = input.ToCharArray();
         int first = -1;
         int last = -1;
